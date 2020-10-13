@@ -3,6 +3,7 @@ import {View, Button,StyleSheet} from 'react-native';
 import MyDatePicker from './MyDatePicker';
 import {Context as DiaryContext} from '../context/DiaryContext';
 import VoiceNative from '../components/VoiceNative';
+import MyButton from '../components/MyButton';
 
 const NewDiary =() =>{
     const {state,addDiaryEntry} =useContext(DiaryContext);
@@ -10,10 +11,12 @@ const NewDiary =() =>{
         <View style= {styles.container}>
             <MyDatePicker/>
             <VoiceNative/>
-            <Button title="Save" onPress={()=>{
-                addDiaryEntry(state.currentEntryText,state.currentEntryDate);
-            }
-            }/>
+            <View>
+                <MyButton title="Save" onPress={()=>{
+                    addDiaryEntry(state.currentEntryText,state.currentEntryDate);
+                }
+                }/>
+            </View>
         </View>
     );
 };

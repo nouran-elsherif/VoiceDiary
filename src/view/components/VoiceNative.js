@@ -7,7 +7,7 @@ import {
   AppRegistry,
 } from 'react-native';
 import Voice from '@react-native-community/voice';
-
+import MyButton from '../components/MyButton';
 import {Context as DiaryContext} from '../context/DiaryContext';
 
 
@@ -76,9 +76,10 @@ render () {
           {/* {this.state.results.map((result, index) => <Text style={styles.transcript}> {result}</Text>
           )} */}
         </View>
-        <Button
+
+        <MyButton
         onPress={this._startRecognition.bind(this)}
-        title="Record"></Button>
+        title="Record"/>
       </View>
     );
   }
@@ -92,8 +93,9 @@ const styles = StyleSheet.create({
   },
   textContainer:{
     margin: 10,
-    borderColor:'black',
+    borderColor:'#1b0c5c',
     borderWidth:1,
+    borderRadius:15,
   }
 });
 AppRegistry.registerComponent('VoiceNative', () => VoiceNative);

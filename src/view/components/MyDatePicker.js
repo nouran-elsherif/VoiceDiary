@@ -34,10 +34,12 @@ const MyDatePicker = () => {
 
 const styles= StyleSheet.create({
     date:{
-        color:'violet',
+        color:'black',
         padding:10,
-        borderColor:'black',
-        borderWidth:1,
+        backgroundColor:'#cccccc',
+        borderRadius:10,
+        // borderColor:'black',
+        // borderWidth:1,
         alignSelf:'center'
     }
 });

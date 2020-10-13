@@ -1,6 +1,6 @@
 import React,{useEffect,useContext} from 'react';
 import {View,Text,StyleSheet,FlatList,TouchableOpacity} from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import Icon from 'react-native-vector-icons/Feather';
 import {Context as DiaryContext} from '../context/DiaryContext';
 
 const IndexScreen = () => {
@@ -33,7 +33,7 @@ const IndexScreen = () => {
                         //show full text in component 2 (update state of current entry)
                         }
                         }>
-                            <Text style={styles.title}>{new Date(item.entry_date).toLocaleDateString()}</Text>
+                            <Text style={styles.date}>{new Date(item.entry_date).toLocaleDateString()}</Text>
                             <Text>{item.entry_text}</Text>
                         </TouchableOpacity>
                         <TouchableOpacity onPress={()=>{
@@ -54,25 +54,31 @@ const IndexScreen = () => {
 
 const styles= StyleSheet.create({
     container:{
-        flex:1
+        flex:1,
+        paddingVertical:10,
     },
     row:{
         flexDirection:'row',
+        backgroundColor:'#b8b8b8',
         justifyContent:'space-between',
         paddingVertical:10,
         paddingHorizontal:10,
-        borderTopWidth: 1,
-        borderBottomWidth:1,
-        borderColor:'gray',
-        marginBottom:5,
+        // borderTopWidth: 1,
+        // borderBottomWidth:1,
+        // borderColor:'gray',
+        borderRadius:10,
+        marginVertical:7,
+        marginHorizontal:10,
 
     },
-    title:{
-        fontSize:18,
+    date:{
+        fontSize:14,
+        fontWeight:'bold',
+        color:'white'
 
     },
     iconStyle:{
-        fontSize: 24,
+        fontSize: 26,
 
     }
 });

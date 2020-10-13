@@ -1,6 +1,6 @@
 import DiaryModel from '../model/model/DiaryModel';
-import VoiceNative from '../apis/STTapi';
-import DiaryEntity from '../model/entity/DiaryEntity';
+// import VoiceNative from '../apis/STTapi';
+// import DiaryEntity from '../model/entity/DiaryEntity';
 
 let controllerInstance = null;
 
@@ -8,7 +8,7 @@ export default class DiaryController{
     constructor(){
         if(!controllerInstance){
             this.model = new DiaryModel();
-            this.sttApi = null;//new VoiceNative();
+            // this.sttApi = null;//new VoiceNative();
 
             controllerInstance = this;
         }
