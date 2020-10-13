@@ -8,9 +8,9 @@ const diaryReducer = (state, action) =>{
         case 'get_diaryentries':
             return {...state,entryList:action.payload};
         case 'add_diaryentry':
-            return {...state, entryList: [...state.entryList,action.payload]};
+            return {...state, entryList: controller.getAllEntries(),currentEntryDate:new Date(), currentEntryText:''};
         case 'delete_diaryentry':
-            return state.entryList.filter((diaryEntry)=>diaryEntry.id !==action.payload);
+            return {...state,entryList: state.entryList.filter((diaryEntry)=>diaryEntry.entry_id !==action.payload)};
         case 'start_recording':
             return state;
         case 'set_date':
@@ -26,21 +26,23 @@ const diaryReducer = (state, action) =>{
 const getDiaryEntries = dispatch =>{
     return () =>{
         const entries = controller.getAllEntries();
+        console.log('context diary entriesss '+entries.length+'   '+ entries)
         dispatch({type:'get_diaryentries',payload:entries});
     }
 }
 
 const addDiaryEntry = (dispatch) =>{
     return (text,date) =>{
-        // const entry=controller.saveEntry({text,date});
         let entry ={text,date};
         let addedEntry=controller.addEntry(entry);
-        dispatch({type:'add_diaryentry', payload:[addedEntry]});
+        console.log('reducer added entry '+addedEntry+ addedEntry.entry_id);
+        dispatch({type:'add_diaryentry', payload:addedEntry});
     }
 };
 
 const deleteDiaryEntry = (dispatch)=>{
     return (id)=>{
+        console.log('context deletee '+ id)
         controller.deleteEntry(id);
         dispatch({type:'delete_diaryentry', payload:id });
     }
@@ -68,21 +70,12 @@ const record = (dispatch)=>{
         dispatch({type:'set_Text', payload:results});
     }
 }
-// const stopRecording = (dispatch)=>{
 
-// }
 
-// getInitialDate=()=>{
-//       var day = new Date().getDate();
-//       var month = new Date().getMonth() + 1;
-//       var year = new Date().getFullYear();
-//       return year + '-' + month + '-' + day;//format: yyyy-mm-day;
-// };
-
-// const initialDate =getInitialDate();
+const listItems=controller.getAllEntries();
 
 
 export const {Context, Provider} = createDataContext(diaryReducer
     ,{addDiaryEntry, deleteDiaryEntry,  getDiaryEntries, record,  setDate, setText},
-    {entryList:getDiaryEntries(), currentEntryText:'TEXTTT', currentEntryDate:new Date(), errorMessage:''}
+    {entryList:listItems, currentEntryText:'TEXTTT', currentEntryDate:new Date(), errorMessage:''}
     );

@@ -1,10 +1,7 @@
 // speech to text api "Voice"
 import Voice from '@react-native-community/voice';
-// import React, {Component, useContext} from 'react';
-// import {MainContext} from '../view/context/MainContext';
 
 let apiInstance = null;
-// let con = MainContext;
 
 export default class VoiceNative {
     constructor(con) {
@@ -42,13 +39,14 @@ export default class VoiceNative {
         this.results= [];
       try {
         await Voice.start('en-US');
-        return this.results;
+        // return this.results;
       } catch (e) {
         console.error(e);
       }
     }
   
-    bindStartRecognition(){
-        this._startRecognition.bind(this.context);
-    }
+   async bindStartRecognition(){
+        await this._startRecognition.bind(this.context);
+        // return this.results;    }
+   }
   }

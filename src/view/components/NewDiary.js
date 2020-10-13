@@ -1,34 +1,16 @@
-import React,{useState, useContext} from 'react';
-import {View, Button, Text,StyleSheet} from 'react-native';
+import React,{ useContext} from 'react';
+import {View, Button,StyleSheet} from 'react-native';
 import MyDatePicker from './MyDatePicker';
-// import DiaryController from '../../controller/Controller';
-import {MainContext} from '../context/MainContext';
 import {Context as DiaryContext} from '../context/DiaryContext';
+import VoiceNative from '../components/VoiceNative';
 
 const NewDiary =() =>{
-    const {state,setDate,record,addDiaryEntry} =useContext(DiaryContext);
-    let appContext = useContext(MainContext);
-    // const [text,setText] = useState('TEEEEEEXT');
-    // const [date,setDate] = useState ('');
-    // const controller = new DiaryController();
+    const {state,addDiaryEntry} =useContext(DiaryContext);
     return (
         <View style= {styles.container}>
-            {/* <MyDatePicker initialDate={new Date()} changeDate={(date)=>{setDate(date)}}/>
-            <Text>{state.currentEntryText} TEXTT</Text> */}
-            <MyDatePicker initialDate={state.currentEntryDate} changeDate={setDate}/>
-            <Text style={styles.text}>{state.currentEntryText}</Text>
-            <Button style={styles.buttonStyle} title="Record" onPress={async()=>{
-                // appContext.context =this;
-                console.log('record');
-
-                await record(this);
-                console.log('baaaaaaack')
-            }
-            }/>
+            <MyDatePicker/>
+            <VoiceNative/>
             <Button title="Save" onPress={()=>{
-                // controller.addEntry(text,date);
-                // addDiaryEntry(text,date);
-                console.log('saave ');
                 addDiaryEntry(state.currentEntryText,state.currentEntryDate);
             }
             }/>

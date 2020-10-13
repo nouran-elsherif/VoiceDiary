@@ -1,18 +1,18 @@
-import React,{useState} from 'react';
+import React,{useState, useContext} from 'react';
 import {View,Text,StyleSheet,TouchableOpacity} from 'react-native';
 import DateTimePicker from '@react-native-community/datetimepicker';
+import {Context as DiaryContext} from '../context/DiaryContext';
 
-const MyDatePicker = (changeDate) => {
-    const [date, setDate] = useState(new Date());
+const MyDatePicker = () => {
+    const {state, setDate} =useContext(DiaryContext);
+    let date = new Date(state.currentEntryDate);
     const [show, setShow] = useState(false);
-    console.log(date)
 
  
   const onChange = (event, selectedDate) => {
     const currentDate = selectedDate || date;
     setShow(false);
     setDate(currentDate);
-    changeDate(currentDate);
   };
     return (
         <View>
