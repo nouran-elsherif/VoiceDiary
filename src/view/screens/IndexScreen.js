@@ -25,7 +25,7 @@ const styles= StyleSheet.create({
     },
     list:{
         flex:1,
-        height:400,
+        // height:'60%',
         // borderColor:'black',
         // borderWidth:1,
         margin:10,
@@ -35,6 +35,7 @@ const styles= StyleSheet.create({
         justifyContent:'flex-end',
         backgroundColor:'white',
         borderRadius:15,
+        height:'40%',
         // borderColor:'black',
         // borderWidth:1,
         margin:10

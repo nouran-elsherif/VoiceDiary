@@ -1,5 +1,5 @@
 import React,{ useContext} from 'react';
-import {View, Button,StyleSheet} from 'react-native';
+import {View, ScrollView,StyleSheet} from 'react-native';
 import MyDatePicker from './MyDatePicker';
 import {Context as DiaryContext} from '../context/DiaryContext';
 import VoiceNative from '../components/VoiceNative';
@@ -8,6 +8,7 @@ import MyButton from '../components/MyButton';
 const NewDiary =() =>{
     const {state,addDiaryEntry} =useContext(DiaryContext);
     return (
+        <ScrollView>
         <View style= {styles.container}>
             <MyDatePicker/>
             <VoiceNative/>
@@ -18,12 +19,14 @@ const NewDiary =() =>{
                 }/>
             </View>
         </View>
+        </ScrollView>
     );
 };
 
 const styles = StyleSheet.create({
     container:{
-        padding:10
+        padding:10,
+        flex:1,
     },
     text:{
         margin:10,
