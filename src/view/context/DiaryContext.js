@@ -77,5 +77,5 @@ const listItems=controller.getAllEntries();
 
 export const {Context, Provider} = createDataContext(diaryReducer
     ,{addDiaryEntry, deleteDiaryEntry,  getDiaryEntries, record,  setDate, setText},
-    {entryList:listItems, currentEntryText:'TEXTTT', currentEntryDate:new Date(), errorMessage:''}
+    {entryList:listItems, currentEntryText:'', currentEntryDate:new Date(), errorMessage:''}
     );

@@ -3,7 +3,6 @@ import {
   StyleSheet,
   Text,
   View,
-  Button,
   AppRegistry,
 } from 'react-native';
 import Voice from '@react-native-community/voice';
@@ -19,12 +18,10 @@ export default class VoiceNative extends React.Component {
       recognized: '',
       started: '',
       results: [],
-      // text:''//this.context.currentEntryText,
     };
     Voice.onSpeechStart = this.onSpeechStart.bind(this);
     Voice.onSpeechRecognized = this.onSpeechRecognized.bind(this);
     Voice.onSpeechResults = this.onSpeechResults.bind(this);
-    // this.state.text = this.context.currentEntryText;
   }
 componentWillUnmount() {
     Voice.destroy().then(Voice.removeAllListeners);
@@ -43,12 +40,7 @@ onSpeechResults(e) {
     this.setState({
       results: e.value,
     });
-    // console.log('currentEntryText '+this.context.currentEntryText)
     this.context.setText(this.state.results[0]);
-    // console.log('currentEntryText '+this.context.currentEntryText)
-    // this.setState({
-    //   text:this.context.currentEntryText,
-    // });
   };
 async _startRecognition(e) {
     this.setState({
@@ -61,20 +53,18 @@ async _startRecognition(e) {
     } catch (e) {
       console.error(e);
     }
-  }
+  };
+
 render () {
-  // this.setState({
-  //   text:this.context.currentEntryText,
-  // });
+  let text = this.context.state.currentEntryText;
+  
     return (
       <View>
         <View style={styles.textContainer}>
           <Text style={styles.transcript}>
               Entry:
           </Text>
-          <Text style={styles.transcript}> {this.state.results[0]}</Text>
-          {/* {this.state.results.map((result, index) => <Text style={styles.transcript}> {result}</Text>
-          )} */}
+          <Text style={styles.transcript}> {text}</Text>
         </View>
 
         <MyButton
@@ -89,7 +79,6 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: 'black',
     margin:5,
-    // top: '400%',
   },
   textContainer:{
     margin: 10,
